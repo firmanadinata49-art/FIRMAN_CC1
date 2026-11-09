@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Space - Firman Adinata</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #A9C9E8;
+            --blue-dark: #719CC5;
+            --blue-light: #EAF4FC;
+            --yellow: #FFE9A8;
+            --yellow-dark: #EBCB70;
+            --cream: #FFFCF3;
+            --text: #526C85;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 18px;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text);
+            background-color: var(--blue-light);
+
+            background-image:
+                radial-gradient(#B8D2E9 1.2px, transparent 1.2px);
+            background-size: 23px 23px;
+            overflow-x: hidden;
+        }
+
+        /* Garis dekorasi pinggir */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 14px;
+            border: 2px dashed #A9C9E8;
+            border-radius: 25px;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            padding: 15px;
+        }
+
+        .card {
+            position: relative;
+            background: var(--cream);
+            border: 2px solid white;
+            border-radius: 30px;
+            padding: 38px 30px;
+            text-align: center;
+            box-shadow: 8px 9px 0px #C3D9ED;
+            overflow: hidden;
+        }
+
+        /* Garis-garis di bagian atas */
+        .top-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--blue) 0px,
+                var(--blue) 15px,
+                var(--yellow) 15px,
+                var(--yellow) 30px
+            );
+        }
+
+        .label {
+            display: inline-block;
+            background: var(--yellow);
+            padding: 8px 17px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #8F7950;
+            transform: rotate(-2deg);
+        }
+
+        .illustration {
+            position: relative;
+            width: 125px;
+            height: 125px;
+            margin: 5px auto 20px;
+            background: var(--blue-light);
+            border: 3px solid white;
+            outline: 2px dashed var(--blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 65px;
+            box-shadow: 0 5px 0 #D4E4F2;
+        }
+
+        .illustration::after {
+            content: "✦";
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            color: var(--yellow-dark);
+            font-size: 32px;
+        }
+
+        .hello {
+            font-family: 'Pacifico', cursive;
+            font-size: 25px;
+            color: var(--blue-dark);
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-size: clamp(25px, 6vw, 34px);
+            font-weight: 800;
+            color: #567FA5;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #91A5B8;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 22px 0;
+            color: var(--yellow-dark);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-top: 2px dashed #C9DCEB;
+        }
+
+        .divider span {
+            font-size: 18px;
+        }
+
+        .identity {
+            background: #EDF5FC;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 0 #D6E5F1;
+        }
+
+        .identity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 5px;
+            border-bottom: 1px dashed #BCD2E6;
+        }
+
+        .identity-item:last-child {
+            border-bottom: none;
+        }
+
+        .identity-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #91A9BF;
+            letter-spacing: 1px;
+        }
+
+        .identity-value {
+            font-size: 14px;
+            font-weight: 800;
+            color: #557C9F;
+            text-align: right;
+        }
+
+        .nim {
+            background: var(--yellow);
+            padding: 6px 10px;
+            border-radius: 10px;
+            color: #88764E;
+            letter-spacing: 1px;
+        }
+
+        .quote {
+            background: #FFF6D9;
+            border-radius: 15px;
+            margin-top: 25px;
+            padding: 16px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.8;
+            color: #A58B53;
+        }
+
+        .quote span {
+            display: block;
+            font-size: 19px;
+            margin-bottom: 4px;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #A5B6C6;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .footer .heart {
+            color: #E8B96B;
+        }
+
+        /* Ornamen */
+        .deco {
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .star1 {
+            top: 65px;
+            left: 5px;
+            color: #E8C96E;
+            font-size: 28px;
+        }
+
+        .star2 {
+            top: 145px;
+            right: 0;
+            color: #8DB7DD;
+            font-size: 24px;
+        }
+
+        .star3 {
+            bottom: 100px;
+            left: 0;
+            color: #E8C96E;
+            font-size: 22px;
+        }
+
+        .star4 {
+            bottom: 35px;
+            right: 5px;
+            color: #8DB7DD;
+            font-size: 27px;
+        }
+
+        .side-line {
+            position: absolute;
+            width: 35px;
+            height: 2px;
+            background: #E8D18C;
+            transform: rotate(-35deg);
+        }
+
+        .line1 {
+            top: 110px;
+            right: -12px;
+        }
+
+        .line2 {
+            bottom: 160px;
+            left: -12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .card {
+                padding: 35px 22px;
+            }
+
+            .identity {
+                padding: 15px;
+            }
+
+            .identity-value {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- Ornamen luar -->
+        <div class="deco star1">✧</div>
+        <div class="deco star2">✦</div>
+        <div class="deco star3">✧</div>
+        <div class="deco star4">✦</div>
+        <div class="deco side-line line1"></div>
+        <div class="deco side-line line2"></div>
+
+        <section class="card">
+
+            <div class="top-lines"></div>
+
+            <div class="label">
+                ✿ MY LITTLE PROFILE ✿
+            </div>
+
+            <div class="illustration">
+                🧸
+            </div>
+
+            <p class="hello">Hello, there!</p>
+
+            <h1>Welcome to My Space</h1>
+
+            <p class="subtitle">
+                A little corner of the internet<br>
+                made with love and happiness ♡
+            </p>
+
+            <div class="divider">
+                <span>✿</span>
+            </div>
+
+            <div class="identity">
+
+                <div class="identity-item">
+                    <div class="identity-label">
+                        ♡ FULL NAME
+                    </div>
+                    <div class="identity-value">
+                        Firman Adinata
+                    </div>
+                </div>
+
+                <div class="identity-item">
+                    <div class="identity-label">
+                        ♡ STUDENT ID
+                    </div>
+                    <div class="identity-value nim">
+                        102042400052
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="quote">
+                <span>☁️ 🌼 ☁️</span>
+                "Little steps every day<br>
+                lead to big dreams someday."
+            </div>
+
+            <div class="footer">
+                MADE WITH <span class="heart">♥</span> AND A LITTLE MAGIC
+                <br><br>
+                © 2026 • FIRMAN'S SPACE
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>
